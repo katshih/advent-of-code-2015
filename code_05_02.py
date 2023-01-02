@@ -2,8 +2,8 @@ inputFile = open("advent-of-code-2015-inputs/input_05.txt", "r")
 inputDat = inputFile.readlines()
 inputFile.close()
 
-strings = ["qjhvhtzxzqqjkmpb", "xxyxx", "uurcxstgmygtbstg", "ieodomkazucvgmuy"]
-#strings = inputDat
+#strings = ["qjhvhtzxzqqjkmpb", "xxyxx", "uurcxstgmygtbstg", "ieodomkazucvgmuy"]
+strings = inputDat
 
 niceStrings = 0
 
@@ -17,9 +17,12 @@ for s in strings:
         if(chars[loc - 2] == c):
             hasSplitPair = True
         if((chars[loc - 1], c) in seenPairs):
-            if(seenPairs[(chars[loc - 1], c)] == loc - 2):
-
-    if((hasDoublePair == True) & (hasSplitPair == True):
-        niceStrings += 1
+            if(seenPairs[(chars[loc - 1], c)] != loc - 2):
+                hasDoublePair = True
+        else:
+            seenPairs[(chars[loc - 1], c)] = loc - 1
+        if((hasSplitPair == True) & (hasDoublePair == True)):
+            niceStrings += 1
+            break
 
 print(niceStrings)
