@@ -48,5 +48,14 @@ def getWireVal(wireName, wires):
     return wireVal
 
 [getWireVal(w, wires) for w in wires]
-#[print(w + ": " + str(wires[w]['value'])) for w in wires]
+bVal = wires['a']['value']
+
+# reset
+for l in inputDat:
+    input = l.split('->')[0].strip()
+    wire = l.split('->')[1].strip()
+    wires[wire] = {'input': input}
+
+wires['b']['input'] = str(bVal)
+[getWireVal(w, wires) for w in wires]
 print(wires['a']['value'])
